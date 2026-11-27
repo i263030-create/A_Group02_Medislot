@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediSlot — Doctor Profile</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="site-header-mount"></div>
+
+  <main class="page-main">
+    <div class="container">
+      <!-- Top Back Bar -->
+      <div class="profile-back-bar">
+        <a class="back-link" href="doctors.html" aria-label="Back to Doctors Directory">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+          </svg>
+          <span>Doctors</span>
+        </a>
+        <h1 class="profile-back-name" id="profile-top-name">Doctor Profile</h1>
+      </div>
+
+      <!-- Invalid Doctor State -->
+      <section class="card empty-state" id="invalid-doctor-state" hidden>
+        <h2>Doctor Not Found</h2>
+        <p id="invalid-doctor-message">We couldn't find the requested doctor profile. They may have moved or the link may be incorrect.</p>
+        <a href="doctors.html" class="btn btn-primary">Browse All Doctors</a>
+      </section>
+
+      <!-- Valid Doctor Content -->
+      <div class="profile-grid" id="profile-content" hidden>
+        <div>
+          <!-- Doctor Summary Card -->
+          <section class="card profile-hero-card" aria-label="Doctor overview">
+            <div class="profile-hero-top">
+              <div id="profile-avatar-mount"></div>
+              <div class="profile-hero-details">
+                <h2 class="profile-name" id="profile-name"></h2>
+                <p class="profile-specialty" id="profile-specialty"></p>
+                <p class="profile-qual" id="profile-qualifications"></p>
+
+                <div class="profile-stats-row">
+                  <span id="profile-rating-summary"></span>
+                  <span id="profile-experience"></span>
+                  <span id="profile-gender"></span>
+                  <span id="profile-room"></span>
+                  <span id="profile-fee"></span>
+                </div>
+
+                <div class="profile-book-row">
+                  <button type="button" class="btn btn-primary" id="profile-book-btn">Book with Doctor</button>
+                  <span id="profile-availability-badge"></span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- About & Reviews Tabs -->
+          <section class="card tabs-card" aria-label="Doctor information and reviews">
+            <div class="tabs-bar" role="tablist" aria-label="Profile Sections">
+              <button type="button" class="tab-btn is-active" role="tab" id="tab-btn-about" aria-selected="true" aria-controls="tab-panel-about">
+                About
+              </button>
+              <button type="button" class="tab-btn" role="tab" id="tab-btn-reviews" aria-selected="false" aria-controls="tab-panel-reviews">
+                Reviews (<span id="reviews-tab-count">0</span>)
+              </button>
+            </div>
+
+            <!-- About Tab Panel -->
+            <div class="tab-panel" role="tabpanel" id="tab-panel-about" aria-labelledby="tab-btn-about">
+              <div class="about-block">
+                <h3>About Me</h3>
+                <p id="profile-about-me"></p>
+              </div>
+              <div class="about-block">
+                <h3>Education &amp; Credentials</h3>
+                <ul class="about-list" id="profile-education-list"></ul>
+              </div>
+              <div class="about-block">
+                <h3>Clinical Services</h3>
+                <div class="services-pills" id="profile-services-list"></div>
+              </div>
+              <div class="about-block">
+                <h3>Languages</h3>
+                <p id="profile-languages" style="margin:0;color:var(--text-secondary);"></p>
+              </div>
+            </div>
+
+            <!-- Reviews Tab Panel -->
+            <div class="tab-panel" role="tabpanel" id="tab-panel-reviews" aria-labelledby="tab-btn-reviews" hidden>
+              <div class="reviews-summary" id="reviews-summary-box"></div>
+              <div id="reviews-list-container"></div>
+
+              <form class="review-form" id="review-form" novalidate>
+                <h3>Write a Patient Review</h3>
+
+                <div class="form-field">
+                  <label for="reviewer-name">Your Name</label>
+                  <input id="reviewer-name" class="form-input" type="text" placeholder="e.g., Ayesha Siddiqui" required>
+                  <p class="form-error" id="reviewer-name-error" aria-live="polite"></p>
+                </div>
+
+                <div class="form-field">
+                  <label id="rating-picker-label">Your Rating</label>
+                  <div class="star-picker" role="radiogroup" aria-labelledby="rating-picker-label" id="star-picker">
+                    <button type="button" class="star-pick-btn" data-rating-value="1" aria-label="1 star" aria-checked="false" role="radio"></button>
+                    <button type="button" class="star-pick-btn" data-rating-value="2" aria-label="2 stars" aria-checked="false" role="radio"></button>
+                    <button type="button" class="star-pick-btn" data-rating-value="3" aria-label="3 stars" aria-checked="false" role="radio"></button>
+                    <button type="button" class="star-pick-btn" data-rating-value="4" aria-label="4 stars" aria-checked="false" role="radio"></button>
+                    <button type="button" class="star-pick-btn" data-rating-value="5" aria-label="5 stars" aria-checked="false" role="radio"></button>
+                  </div>
+                  <p class="form-error" id="review-rating-error" aria-live="polite"></p>
+                </div>
+
+                <div class="form-field">
+                  <label for="review-comment">Your Review</label>
+                  <textarea id="review-comment" class="form-textarea" rows="3" placeholder="Share your experience with the consultation, wait time, and communication..." required></textarea>
+                  <p class="form-error" id="review-comment-error" aria-live="polite"></p>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit Review</button>
+                <p class="form-feedback" id="review-submit-feedback" role="status" aria-live="polite"></p>
+              </form>
+            </div>
+          </section>
+        </div>
+
+        <!-- Right Sidebar: Availability Calendar -->
+        <aside class="card calendar-card" aria-label="Availability calendar">
+          <h2>Availability Calendar</h2>
+          <p class="calendar-sub" id="calendar-subtext">Select a day and time slot to book.</p>
+
+          <div class="calendar-days" id="calendar-days-grid"></div>
+
+          <p class="slots-label" id="slots-date-label">Available Time Slots</p>
+          <div class="slots-grid" id="calendar-slots-grid"></div>
+
+          <button type="button" class="btn btn-primary" id="calendar-book-btn" style="width:100%;">
+            Book Selected Slot
+          </button>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer-mount"></div>
+  <div id="mobile-bottom-bar-mount"></div>
+
+  <script src="data/doctors.js"></script>
+  <script src="js/shared.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+</html>

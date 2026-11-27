@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediSlot — Departments</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Shared site header & navigation -->
+  <div id="site-header-mount"></div>
+
+  <main class="page-main">
+    <div class="container">
+      <!-- Page title & directory CTA -->
+      <div class="page-hero">
+        <div>
+          <h1 class="page-title">Medical Departments</h1>
+          <p class="page-subtitle">Explore Cardiology, Orthopedics, Neurology, Pediatrics, and Dermatology at MediSlot.</p>
+        </div>
+        <a href="doctors.html" class="btn btn-primary">View All Doctors</a>
+      </div>
+
+      <!-- Icon cards rendered dynamically from MEDISLOT_DATA.departments -->
+      <section class="departments-grid" id="departments-grid" aria-label="Clinic departments"></section>
+
+      <!-- Clinic hours & Health Hub anchor -->
+      <section class="card recently-viewed-section" id="health-hub" aria-label="MediSlot Clinic Care Guide">
+        <div class="recently-viewed-header">
+          <h2>Health Hub &amp; Clinic Hours</h2>
+          <a href="doctors.html" class="btn btn-soft btn-sm">Find a Specialist</a>
+        </div>
+        <p class="page-subtitle">
+          Walk-in and scheduled consultations are open Monday through Saturday from 8:00 AM to 8:00 PM at 123 Clinic, Street No. 5, Health City. Select any department above to filter specialists by speciality or open a doctor profile directly.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <!-- Shared footer & mobile bottom bar -->
+  <div id="site-footer-mount"></div>
+  <div id="mobile-bottom-bar-mount"></div>
+
+  <script src="data/doctors.js"></script>
+  <script src="js/shared.js"></script>
+  <script src="js/departments.js"></script>
+</body>
+</html>
