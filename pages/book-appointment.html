@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medislot — Book Appointment</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  <link rel="stylesheet" href="../css/shared.css">
+  <link rel="stylesheet" href="../css/book-appointment.css">
+</head>
+<body>
+  <a class="skip-link" href="#mainContent">Skip to main content</a>
+
+  <header>
+    <nav class="navbar navbar-expand-lg ms-navbar" aria-label="Primary Navigation">
+      <div class="container">
+        <a class="ms-brand" href="services-fees.html">
+          <span class="ms-brand-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+              <path d="M7 11h2.5l1.5-3 2 6 1.5-3H17"/>
+            </svg>
+          </span>
+          <span class="ms-brand-text">
+            <span class="ms-brand-name">Medislot</span>
+            <span class="ms-brand-tagline">Your Health, Your Priority</span>
+          </span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+          <ul class="ms-nav-links navbar-nav ms-auto mt-3 mt-lg-0">
+            <li class="nav-item"><a class="ms-nav-link" href="../index.html" data-member-module="Home">Home</a></li>
+            <li class="nav-item"><a class="ms-nav-link" href="doctors.html" data-member-module="Doctors">Doctors</a></li>
+            <li class="nav-item"><a class="ms-nav-link" href="services-fees.html">Services &amp; Fees</a></li>
+            <li class="nav-item"><a class="ms-nav-link active" href="book-appointment.html" aria-current="page">Book Appointment</a></li>
+            <li class="nav-item"><a class="ms-nav-link" href="confirmation.html">My Account</a></li>
+            <li class="nav-item"><a class="ms-nav-link" href="health-hub.html" data-member-module="Health Hub">Health Hub</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="mainContent" class="booking-page-section">
+    <div class="container">
+      <!-- Hero Banner matching prototype (Doctor photo left, Title center, Clock icon right) -->
+      <section class="booking-hero" aria-label="Booking header">
+        <img id="bookingHeroDoctorImg" class="doctor-photo-circle doctor-photo-circle--lg" src="../image/dr-amara-khan.jpg" alt="Portrait of Dr. Amara Khan, Cardiologist" width="68" height="68">
+        <div class="booking-hero-center">
+          <h1 class="booking-hero-title">Book Your Appointment</h1>
+          <p class="booking-hero-subtitle">Find Best Doctor and Book easily</p>
+        </div>
+        <div class="hero-clock-circle" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+      </section>
+
+      <!-- 3-Step Horizontal Stepper -->
+      <nav class="booking-stepper" aria-label="Appointment booking steps">
+        <button type="button" class="step-item active" id="stepBtn1" data-step="1">
+          <span class="step-circle">1</span>
+          <span class="desktop-only-label">Select doctor</span>
+          <span class="mobile-only-label">Doctor</span>
+        </button>
+        <div class="step-connector" id="stepConn1"></div>
+        <button type="button" class="step-item" id="stepBtn2" data-step="2">
+          <span class="step-circle">2</span>
+          <span class="desktop-only-label">Choose Date</span>
+          <span class="mobile-only-label">Date</span>
+        </button>
+        <div class="step-connector" id="stepConn2"></div>
+        <button type="button" class="step-item" id="stepBtn3" data-step="3">
+          <span class="step-circle">3</span>
+          <span>Details</span>
+        </button>
+      </nav>
+
+      <!-- Main 3-Column Desktop Layout / Stacked Mobile Accordions -->
+      <div class="booking-columns">
+        <!-- Column 1: Choose Doctor -->
+        <section class="booking-panel" id="panelDoctor" aria-labelledby="headingChooseDoctor">
+          <button type="button" class="panel-header-btn" id="headingChooseDoctor" data-accordion-target="panelDoctor" aria-expanded="true">
+            <span class="desktop-only-label">Choose doctor</span>
+            <span class="mobile-only-label">Select Doctor</span>
+            <span class="panel-chevron" aria-hidden="true">&#9662;</span>
+          </button>
+
+          <div class="panel-collapsible-body">
+            <div class="doctor-filters">
+              <div>
+                <label for="doctorSearchInput" class="visually-hidden">Search doctor</label>
+                <input type="search" id="doctorSearchInput" class="form-control form-control-sm" placeholder="Search doctor...">
+              </div>
+              <div>
+                <label for="specialistFilter" class="visually-hidden">Specialist</label>
+                <select id="specialistFilter" class="form-select form-select-sm" aria-label="Filter by specialist">
+                  <option value="all">Specialist: All</option>
+                  <option value="Cardiologist">Cardiologist</option>
+                  <option value="General Physician">General Physician</option>
+                  <option value="Dermatologist">Dermatologist</option>
+                  <option value="Neurologist">Neurologist</option>
+                  <option value="Pediatrician">Pediatrician</option>
+                  <option value="Orthopedic Specialist">Orthopedic Specialist</option>
+                  <option value="Dentist">Dentist</option>
+                </select>
+              </div>
+            </div>
+
+            <div id="doctorList" class="doctor-list" aria-live="polite"></div>
+          </div>
+        </section>
+
+        <!-- Column 2: Available Slots (Desktop) / Separate Select Date & Select Time (Mobile) -->
+        <section class="booking-panel" id="panelSlots" aria-labelledby="headingAvailableSlots">
+          <div class="panel-header-btn panel-header-btn--desktop-only" id="headingAvailableSlots">
+            <span>Available slots</span>
+          </div>
+
+          <div id="slotsPanelBody" aria-live="polite"></div>
+        </section>
+
+        <!-- Column 3: Booking Summary & Patient Details -->
+        <aside class="booking-panel booking-panel--summary" id="panelSummary" aria-labelledby="headingBookingSummary">
+          <button type="button" class="panel-header-btn" id="headingBookingSummary" data-accordion-target="panelSummary" aria-expanded="true">
+            <span>Booking Summary</span>
+            <span class="panel-chevron" aria-hidden="true">&#9662;</span>
+          </button>
+
+          <div class="panel-collapsible-body">
+            <div id="summaryDisplay">
+              <div class="summary-row">
+                <span class="summary-label">Doctor</span>
+                <span class="summary-value" id="summaryDoctor">Not selected</span>
+              </div>
+              <div class="summary-row">
+                <span class="summary-label">Service</span>
+                <span class="summary-value" id="summaryService">Not selected</span>
+              </div>
+              <div class="summary-row">
+                <span class="summary-label">Date</span>
+                <span class="summary-value" id="summaryDate">Not selected</span>
+              </div>
+              <div class="summary-row">
+                <span class="summary-label">Time</span>
+                <span class="summary-value" id="summaryTime">Not selected</span>
+              </div>
+            </div>
+
+            <div class="summary-fee-box" aria-live="polite">
+              <div class="summary-fee-line">
+                <span>Service Fee</span>
+                <span id="feeService">Rs. 0</span>
+              </div>
+              <div class="summary-fee-total">
+                <span>Total Fee</span>
+                <span id="feeTotal">Rs. 0</span>
+              </div>
+            </div>
+
+            <!-- Interactive Flow Container: Patient Details Form / Invalid State / Review / Success / Failed -->
+            <div id="bookingFlowContainer" aria-live="polite"></div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="ms-footer">
+    <div class="container">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+        <div>
+          <strong>Medislot</strong> &mdash; Your Health, Your Priority
+        </div>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="services-fees.html">Services &amp; Fees</a>
+          <a href="book-appointment.html">Book Appointment</a>
+          <a href="confirmation.html">Confirmation</a>
+        </div>
+      </div>
+      <div class="ms-footer-disclosure">
+        Note: Doctor portrait photographs used across this website are AI-generated placeholders for academic demonstration.
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  <script src="../js/medislot-data.js"></script>
+  <script src="../js/medislot-state.js"></script>
+  <script src="../js/book-appointment.js"></script>
+</body>
+</html>

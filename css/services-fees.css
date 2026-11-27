@@ -1,0 +1,153 @@
+/* =========================================================
+   Medislot — Services & Fees Page Styles
+   Faithful 2x2 Quadrant Grid with Central Accent
+   ========================================================= */
+
+.services-section {
+  padding: 2.5rem 0 3.25rem;
+}
+
+.services-header {
+  text-align: center;
+  margin-bottom: 2.25rem;
+}
+
+.services-title {
+  font-size: clamp(1.75rem, 3vw, 2.3rem);
+  font-weight: 700;
+  color: var(--ms-navy);
+  margin-bottom: 0.4rem;
+  letter-spacing: -0.015em;
+}
+
+.services-subtitle {
+  font-size: 1.02rem;
+  color: var(--ms-muted);
+  margin: 0;
+}
+
+/* 2x2 Quadrant Grid matching hand-drawn prototype */
+.services-quadrant-wrapper {
+  position: relative;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  position: relative;
+}
+
+/* Subtle central diamond emblem where the 4 cards meet on desktop */
+.services-center-diamond {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 44px;
+  height: 44px;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background: var(--ms-surface);
+  border: 1.5px solid var(--ms-border);
+  border-radius: 6px;
+  box-shadow: var(--ms-shadow-sm);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.services-center-diamond-inner {
+  width: 14px;
+  height: 14px;
+  background-color: var(--ms-primary);
+  border-radius: 2px;
+}
+
+.service-card {
+  background-color: var(--ms-surface);
+  border: 1.5px solid var(--ms-border);
+  border-radius: var(--ms-radius-lg);
+  padding: 2rem 1.75rem;
+  box-shadow: var(--ms-shadow-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform var(--ms-transition), box-shadow var(--ms-transition), border-color var(--ms-transition);
+}
+
+.service-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--ms-shadow-md);
+  border-color: var(--ms-primary);
+}
+
+.service-icon-box {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--ms-primary-light);
+  border: 1px solid var(--ms-border);
+  color: var(--ms-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.service-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ms-navy);
+  margin-bottom: 0.55rem;
+}
+
+.service-description {
+  font-size: 0.92rem;
+  color: var(--ms-muted);
+  margin-bottom: 1rem;
+  max-width: 32ch;
+  flex: 1 0 auto;
+}
+
+.service-meta {
+  font-size: 0.82rem;
+  color: var(--ms-muted);
+  margin-bottom: 0.5rem;
+}
+
+.service-fee {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--ms-primary);
+  margin-bottom: 1.15rem;
+}
+
+.btn-book-now {
+  min-width: 152px;
+  padding: 0.58rem 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.015em;
+}
+
+@media (max-width: 767.98px) {
+  .services-section {
+    padding: 1.75rem 0 2.5rem;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+  }
+
+  .services-center-diamond {
+    display: none;
+  }
+
+  .service-card {
+    padding: 1.5rem 1.25rem;
+  }
+}
