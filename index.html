@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MediSlot Health Hub — Doctor-written health articles on heart health, skin care, bones and joints, general health, and nutrition.">
+  <title>MediSlot | Health Articles</title>
+  <link rel="icon" type="image/svg+xml" href="images/logo-icon.svg">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#mainContent">Skip to main content</a>
+
+  <!-- Site Header & Responsive Navigation -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand" aria-label="MediSlot Home">
+        <img src="images/logo-icon.svg" alt="" class="brand-icon" width="40" height="40">
+        <span class="brand-text">
+          <span class="brand-name">MediSlot</span>
+          <span class="brand-tagline">Your Health, Your Priority</span>
+        </span>
+      </a>
+
+      <button
+        type="button"
+        id="mobileMenuBtn"
+        class="mobile-menu-btn"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="primaryNav"
+      >
+        <svg class="menu-icon-open" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="4" y1="6" x2="20" y2="6"></line>
+          <line x1="4" y1="12" x2="20" y2="12"></line>
+          <line x1="4" y1="18" x2="20" y2="18"></line>
+        </svg>
+        <svg class="menu-icon-close" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+        </svg>
+      </button>
+
+      <nav id="primaryNav" class="primary-nav" aria-label="Primary navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="#doctors" class="nav-link" data-upcoming="Doctors">Doctors</a></li>
+          <li class="nav-item"><a href="#services" class="nav-link" data-upcoming="Services &amp; Fees">Services &amp; Fees</a></li>
+          <li class="nav-item"><a href="#book-appointment" class="nav-link" data-upcoming="Book Appointment">Book Appointment</a></li>
+          <li class="nav-item"><a href="#my-account" class="nav-link" data-upcoming="My Account">My Account</a></li>
+          <li class="nav-item"><a href="index.html" class="nav-link is-active" aria-current="page">Health Hub</a></li>
+          <li class="nav-item nav-item-cta">
+            <a href="#book-now" class="btn btn-dark-blue nav-cta" data-upcoming="Book Now">Book Now</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content: Page 1 (Health Articles) -->
+  <main id="mainContent" class="site-main">
+    <div class="container">
+      <!-- Page Hero Banner -->
+      <section class="page-banner" aria-labelledby="pageTitle">
+        <h1 id="pageTitle" class="page-title">Health Articles</h1>
+        <p class="page-subtitle">Tips from our doctors. Tap the star to save an article for later.</p>
+      </section>
+
+      <!-- Filter Pills, Search & Saved Dropdown -->
+      <section class="articles-toolbar" aria-label="Filter and search health articles">
+        <div id="categoryPills" class="filter-pills" role="group" aria-label="Article categories">
+          <button type="button" class="pill-btn is-active" data-category="All" aria-pressed="true">All</button>
+          <button type="button" class="pill-btn" data-category="Heart Health" aria-pressed="false">Heart Health</button>
+          <button type="button" class="pill-btn" data-category="Skin Care" aria-pressed="false">Skin Care</button>
+          <button type="button" class="pill-btn" data-category="Bones &amp; Joints" aria-pressed="false">Bones &amp; Joints</button>
+          <button type="button" class="pill-btn" data-category="General Health" aria-pressed="false">General Health</button>
+          <button type="button" class="pill-btn" data-category="Nutrition" aria-pressed="false">Nutrition</button>
+        </div>
+
+        <div class="toolbar-actions">
+          <div class="search-field">
+            <label for="articleSearch" class="sr-only">Search articles</label>
+            <input
+              type="search"
+              id="articleSearch"
+              class="search-input"
+              placeholder="Search articles..."
+              autocomplete="off"
+            >
+          </div>
+
+          <div class="saved-dropdown">
+            <button
+              type="button"
+              id="savedDropdownBtn"
+              class="saved-btn"
+              aria-expanded="false"
+              aria-controls="savedPopover"
+            >
+              Saved (<span id="savedCount">0</span>) <span class="caret" aria-hidden="true">&#9662;</span>
+            </button>
+            <div id="savedPopover" class="saved-popover" hidden role="region" aria-label="Saved articles">
+              <div id="savedPopoverBody" class="saved-popover-body"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Articles Grid & Empty State -->
+      <section class="articles-section" aria-label="Health articles list">
+        <div id="articlesGrid" class="articles-grid" aria-live="polite"></div>
+
+        <div id="emptyState" class="empty-state" hidden>
+          <p class="empty-state-text">No articles found</p>
+          <button type="button" id="clearFilterBtn" class="clear-filter-link">Clear filter</button>
+        </div>
+      </section>
+
+      <!-- Pagination -->
+      <nav id="paginationNav" class="pagination" aria-label="Articles pagination">
+        <button type="button" id="prevPageBtn" class="page-btn">&lsaquo; Prev</button>
+        <span id="pageIndicator" class="page-indicator">Page 1 of 3</span>
+        <button type="button" id="nextPageBtn" class="page-btn">Next &rsaquo;</button>
+      </nav>
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h2 class="footer-heading">MediSlot Clinic</h2>
+          <p class="footer-text">14-B Medical Enclave, Gulberg</p>
+        </div>
+        <div class="footer-col">
+          <h2 class="footer-heading">Phone</h2>
+          <p class="footer-text">+92 (042) 3576-1900</p>
+        </div>
+        <div class="footer-col">
+          <h2 class="footer-heading">Opening hours</h2>
+          <p class="footer-text">Mon to Sat, 9am to 8pm</p>
+        </div>
+        <div class="footer-col">
+          <h2 class="footer-heading">Quick links</h2>
+          <p class="footer-text footer-links">
+            <a href="#doctors" data-upcoming="Doctors">Doctors</a>
+            <span aria-hidden="true">&middot;</span>
+            <a href="#book-appointment" data-upcoming="Book Appointment">Book</a>
+            <span aria-hidden="true">&middot;</span>
+            <a href="#faq" data-upcoming="FAQ &amp; Insurance">FAQ</a>
+          </p>
+        </div>
+        <div class="footer-col footer-copy-col">
+          <p class="footer-copy">&copy; MediSlot 2026</p>
+        </div>
+      </div>
+
+      <p class="footer-mobile-copy">MediSlot Clinic &middot; &copy; 2026</p>
+    </div>
+  </footer>
+
+  <!-- Full Article Reader Modal -->
+  <div id="articleModal" class="modal-backdrop" hidden role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <div class="modal-header">
+        <span id="modalCategory" class="category-badge">Category</span>
+        <div class="modal-header-actions">
+          <button type="button" id="modalStarBtn" class="star-btn" aria-label="Save article">
+            <span class="star-icon" aria-hidden="true">&#9734;</span>
+          </button>
+          <button type="button" id="modalCloseBtn" class="modal-close-btn" aria-label="Close article">&times;</button>
+        </div>
+      </div>
+      <div class="modal-image-wrap">
+        <img id="modalImage" src="images/article-heart.svg" alt="">
+      </div>
+      <h2 id="modalTitle" class="modal-title"></h2>
+      <p id="modalMeta" class="modal-meta"></p>
+      <div id="modalBody" class="modal-body"></div>
+      <div class="modal-footer">
+        <button type="button" id="modalDoneBtn" class="btn btn-outline-blue">Close Article</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Subtle Notification Toast for Unbuilt Navigation Links -->
+  <div id="toastNotice" class="toast-notice" role="status" aria-live="polite" hidden></div>
+</body>
+</html>
