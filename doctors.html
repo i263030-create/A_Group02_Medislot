@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediSlot — Find a Doctor</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="site-header-mount"></div>
+
+  <main class="page-main">
+    <div class="container">
+      <div class="page-hero">
+        <div>
+          <h1 class="page-title">Find a Doctor</h1>
+          <p class="page-subtitle">Browse MediSlot specialists, compare ratings and availability, and book your visit.</p>
+        </div>
+        <a href="departments.html" class="btn btn-soft">Explore Departments</a>
+      </div>
+
+      <div class="directory-layout">
+        <!-- Left Filters Sidebar -->
+        <aside class="card filters-sidebar" aria-label="Doctor filters">
+          <div class="filters-header">
+            <h2>Filters</h2>
+            <button type="button" class="btn btn-outline btn-sm" id="sidebar-clear-btn">Clear all</button>
+          </div>
+
+          <div class="filter-group">
+            <h3 class="filter-group-title">Speciality</h3>
+            <div class="filter-options">
+              <label class="filter-option">
+                <input type="checkbox" name="speciality" value="Cardiology">
+                <span>Cardiology</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="speciality" value="Dermatology">
+                <span>Dermatology</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="speciality" value="General Physician">
+                <span>General Physician</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="speciality" value="Orthopedics">
+                <span>Orthopedics</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <h3 class="filter-group-title">Gender</h3>
+            <div class="filter-options">
+              <label class="filter-option">
+                <input type="checkbox" name="gender" value="Female">
+                <span>Female</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="gender" value="Male">
+                <span>Male</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <h3 class="filter-group-title">Availability</h3>
+            <div class="filter-options">
+              <label class="filter-option">
+                <input type="checkbox" name="availability" value="Today">
+                <span>Today</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="availability" value="This Week">
+                <span>This Week</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="filter-actions-stack">
+            <button type="button" class="btn btn-primary" id="save-filters-btn">Save filters</button>
+            <button type="button" class="btn btn-outline btn-sm" id="apply-saved-filters-btn" hidden>Load saved filters</button>
+            <p class="save-status-msg" id="save-filters-status" role="status" aria-live="polite"></p>
+          </div>
+        </aside>
+
+        <!-- Main Results Column -->
+        <section aria-label="Doctor directory results">
+          <div class="directory-toolbar">
+            <div class="search-box">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="M21 21l-4.35-4.35"></path>
+              </svg>
+              <label for="doctor-search" class="sr-only">Search doctors by name, speciality, or qualification</label>
+              <input id="doctor-search" class="search-input" type="search" placeholder="Search by name, speciality, or MBBS/FCPS...">
+            </div>
+
+            <div class="sort-wrap">
+              <label for="doctor-sort">Sort by</label>
+              <select id="doctor-sort" class="sort-select">
+                <option value="recommended">Recommended</option>
+                <option value="rating-desc">Rating: High to Low</option>
+                <option value="experience-desc">Experience: Most Years</option>
+                <option value="name-asc">Name: A to Z</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="results-meta-row">
+            <p class="results-count" id="results-count" aria-live="polite"></p>
+          </div>
+
+          <div class="chips-bar" id="active-chips-bar" hidden aria-label="Active filters"></div>
+
+          <div class="doctors-grid" id="doctors-grid"></div>
+
+          <div class="card empty-state" id="empty-results-state" hidden>
+            <h3>No doctors match your filters</h3>
+            <p>Try removing a filter or resetting your search to view all available specialists.</p>
+            <button type="button" class="btn btn-primary" id="empty-clear-btn">Clear all filters</button>
+          </div>
+
+          <!-- Recently Viewed Section -->
+          <section class="card recently-viewed-section" aria-label="Recently viewed doctors">
+            <div class="recently-viewed-header">
+              <h2>Recently Viewed</h2>
+              <button type="button" class="btn btn-outline btn-sm" id="clear-recent-btn" hidden>Clear history</button>
+            </div>
+            <div class="recently-viewed-grid" id="recently-viewed-list"></div>
+          </section>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer-mount"></div>
+
+  <script src="data/doctors.js"></script>
+  <script src="js/shared.js"></script>
+  <script src="js/directory.js"></script>
+</body>
+</html>
