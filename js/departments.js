@@ -56,9 +56,7 @@
       return (
         '<article class="card department-card">' +
         '  <div class="department-card-head">' +
-        '    <div class="department-icon" style="background:' +
-        MS.escapeHtml(dept.accent || '#0F766E') +
-        ';" aria-hidden="true">' +
+        '    <div class="department-icon" aria-hidden="true">' +
         (deptIcons[dept.id] || deptIcons.cardiology) +
         '    </div>' +
         '    <div>' +

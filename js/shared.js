@@ -87,11 +87,7 @@
 
   function renderAvatarHtml(doctor) {
     return (
-      '<div class="doctor-avatar" style="background:' +
-      escapeHtml(doctor.avatarBg || '#CCFBF1') +
-      ';color:' +
-      escapeHtml(doctor.avatarFg || '#0F766E') +
-      ';" aria-hidden="true">' +
+      '<div class="doctor-avatar" aria-hidden="true">' +
       '<svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor">' +
       '<path d="M12 12a4.5 4.5 0 100-9 4.5 4.5 0 000 9zm0 2c-4.418 0-8 2.239-8 5v1h16v-1c0-2.761-3.582-5-8-5z"/>' +
       '</svg>' +
@@ -182,6 +178,7 @@
     var navItems = [
       { key: 'home', label: 'Home', href: 'departments.html', externalNotice: false },
       { key: 'doctors', label: 'Doctors', href: 'doctors.html', externalNotice: false },
+      { key: 'services', label: 'Services & Fees', href: 'departments.html#departments-grid', externalNotice: false },
       { key: 'book', label: 'Book Appointment', href: '#book-appointment', action: 'book' },
       { key: 'account', label: 'My Account', href: '#my-account', action: 'account' },
       { key: 'health-hub', label: 'Health Hub', href: 'departments.html#health-hub', externalNotice: false }
@@ -200,12 +197,7 @@
         '<header class="site-header">' +
         '  <div class="container header-inner">' +
         '    <a class="brand-logo" href="doctors.html" aria-label="MediSlot Home">' +
-        '      <span class="brand-mark" aria-hidden="true">' +
-        '        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">' +
-        '          <path d="M12 5v14M5 12h14"/>' +
-        '        </svg>' +
-        '      </span>' +
-        '      <span>MediSlot</span>' +
+        '      <img src="images/logo.png" alt="MediSlot logo" class="brand-logo-img">' +
         '    </a>' +
         '    <nav class="main-nav" aria-label="Primary Navigation">' +
         linksHtml +
@@ -233,6 +225,7 @@
         '<footer class="site-footer">' +
         '  <div class="container footer-inner">' +
         '    <p class="footer-copy">&copy; MediSlot 2026. All rights reserved. 123 Clinic, Street No. 5, Health City, HC 90210 | (555) 123-4567 | Mon-Sat 8 AM-8 PM</p>' +
+        '    <!-- Logo attribution placeholder: add "Logo generated using AI tools" once tool name is provided -->' +
         '    <div class="footer-links">' +
         '      <a href="doctors.html">Doctors</a>' +
         '      <a href="departments.html">Departments</a>' +
@@ -303,7 +296,7 @@
         '    <button type="submit" class="btn btn-primary" style="width:100%;">Confirm Appointment</button>' +
         '  </form>' +
         '  <div id="booking-modal-success" hidden>' +
-        '    <p style="color:var(--success);font-weight:600;margin-top:0;">Appointment request confirmed!</p>' +
+        '    <p style="color:var(--primary);font-weight:600;margin-top:0;">Appointment request confirmed!</p>' +
         '    <p id="booking-confirm-text" class="calendar-sub"></p>' +
         '    <button type="button" class="btn btn-outline" id="booking-done-btn" style="width:100%;">Done</button>' +
         '  </div>' +

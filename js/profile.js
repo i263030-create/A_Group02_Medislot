@@ -112,12 +112,12 @@
     if (stats.count === 0) {
       headerRatingEl.innerHTML =
         MS.renderStarsHtml(0, 'No reviews yet') +
-        ' <span style="color:var(--text-muted);">No reviews yet</span>';
+        ' <span style="color:var(--body-text);">No reviews yet</span>';
 
       summaryBoxEl.innerHTML =
         '<div>' +
         '  <div class="reviews-avg-score">0.0</div>' +
-        '  <div style="font-size:0.85rem;color:var(--text-muted);">0 patient reviews</div>' +
+        '  <div style="font-size:0.85rem;color:var(--body-text);">0 patient reviews</div>' +
         '</div>' +
         MS.renderStarsHtml(0, '0 out of 5 stars');
 
@@ -147,8 +147,8 @@
       '<div>' +
       '  <div class="reviews-avg-score">' +
       stats.average.toFixed(1) +
-      ' <span style="font-size:0.95rem;font-weight:500;color:var(--text-muted);">/ 5.0</span></div>' +
-      '  <div style="font-size:0.85rem;color:var(--text-secondary);">Based on ' +
+      ' <span style="font-size:0.95rem;font-weight:500;color:var(--body-text);">/ 5.0</span></div>' +
+      '  <div style="font-size:0.85rem;color:var(--body-text);">Based on ' +
       stats.count +
       ' patient review' +
       (stats.count === 1 ? '' : 's') +
