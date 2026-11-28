@@ -122,6 +122,14 @@ main {
   flex-shrink: 0;
 }
 
+.ms-brand-logo {
+  height: 40px;
+  width: auto;
+  max-width: 100%;
+  display: block;
+  object-fit: contain;
+}
+
 .ms-brand-text {
   display: flex;
   flex-direction: column;
